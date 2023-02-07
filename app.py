@@ -285,10 +285,16 @@ def get_level():
     return {'level': n, 'emotion': y}
 
 
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('index.html')
+
 @app.route("/")
 @cross_origin(supports_credentials=True)
 def test():
     return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=6000 , host = '0.0.0.0' , debug=True) # , host = '0.0.0.0'
