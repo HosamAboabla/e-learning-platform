@@ -51,7 +51,7 @@
     offset: 20,
     spacing: 10,
     z_index: 1031,
-    delay: 6010,
+    delay: 6000,
     timer: 1000,
     url_target: '_blank',
     mouse_over: null,
