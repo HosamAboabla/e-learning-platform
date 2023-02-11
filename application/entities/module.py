@@ -2,7 +2,7 @@ from application.data_base.database_migration import Module, db, Cour
 from datetime import date
 from flask import jsonify
 
-from application.entities.cours import cour_serialize
+from application.entities.cours import cour_serialize , header_cour_serialize
 
 
 
@@ -16,6 +16,12 @@ def module_serialize(module):
         'cours': [*map(cour_serialize,Cour.query.filter_by(module_id = module.id).all())]
     }
 
+def header_module_serialize(module):
+    return{
+        'id': module.id,
+        'title': module.title,
+        'cours': [*map(header_cour_serialize,Cour.query.filter_by(module_id = module.id).all())]
+    }
 
 def add_module(request_data):
     moDule = Module(

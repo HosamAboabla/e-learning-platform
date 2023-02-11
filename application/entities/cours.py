@@ -1,7 +1,7 @@
 from datetime import date
 
 from application.data_base.database_migration import Evaluation, Cour, db
-from application.entities.evaluation import evaluation_serialize
+from application.entities.evaluation import evaluation_serialize , header_evaluation_serialize
 
 
 def cour_serialize(cour):
@@ -15,6 +15,13 @@ def cour_serialize(cour):
         'evaluations' : [*map(evaluation_serialize, Evaluation.query.filter_by(cours_id = cour.id).all())]
     }
 
+def header_cour_serialize(cour):
+    return{
+        'id': cour.id,
+        'title': cour.title,
+        'module_id' : cour.module_id,
+        'evaluations' : [*map(header_evaluation_serialize, Evaluation.query.filter_by(cours_id = cour.id).all())]
+    }
 
 def add_cours(request_data):
     cours = Cour(

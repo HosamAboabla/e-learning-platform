@@ -16,7 +16,7 @@ from application.entities.cours import cour_serialize, add_cours
 from application.entities.evaluation import evaluation_serialize, add_evaluation, add_Question, evaluation_serializez , question_serializez
 from application.entities.question import question_serialize
 from application.entities.user import add_user, user_serializez, get_all_user
-from application.entities.module import add_module, module_serialize
+from application.entities.module import add_module, module_serialize , header_module_serialize
 from application.data_base.database_migration import app, User, bcrypt, db, Module, Cour, Evaluation, Question
 
 emotion_class = Emotion()
@@ -89,7 +89,7 @@ def create_module():
         add_module(request_data)
         return {" 201 ": "create successfully"}
     else:
-        return jsonify([*map(module_serialize, Module.query.all())])
+        return jsonify([*map(header_module_serialize, Module.query.all())])
 
 
 @app.route('/api/one_module/<id_user>')

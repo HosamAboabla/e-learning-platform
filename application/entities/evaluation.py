@@ -14,6 +14,15 @@ def evaluation_serialize(evaluation):
         "questions" : [*map(question_serialize,Question.query.filter_by(evaluation_id = evaluation.id).all())]
     }
 
+
+
+def header_evaluation_serialize(evaluation):
+    return{
+        'title': evaluation.title,
+    }
+
+
+
 def evaluation_serializez(evaluation):
     return{
         'id': evaluation.id,
